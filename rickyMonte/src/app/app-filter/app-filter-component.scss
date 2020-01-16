@@ -1,0 +1,13 @@
+@import "../../variables.scss";
+.rm-filter-section-title {
+    height:2rem;
+    background-color: $header-color;
+    width:100%;
+    @include center-align();
+    
+    h6 {
+        font-family:$header;
+        color:$header-font-color;
+        font-size: 1rem;
+    }
+  }

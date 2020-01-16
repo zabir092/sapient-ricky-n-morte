@@ -1,0 +1,16 @@
+//App-theme
+$app-background:#eb7c40;
+$header-color:black;
+$header-font-color:#f3f4f5;
+
+
+//Fonts
+$header: 'Roboto Condensed', sans-serif;
+
+
+//mixins
+@mixin center-align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

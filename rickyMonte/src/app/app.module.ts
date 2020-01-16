@@ -9,10 +9,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
+import { AppFilterComponent } from './app-filter/app-filter.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AppFilterComponent
   ],
   imports: [
     BrowserModule,
