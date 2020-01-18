@@ -1,13 +1,39 @@
 @import "../../variables.scss";
 .rm-filter-section-title {
-    height:2rem;
-    background-color: $header-color;
-    width:100%;
-    @include center-align();
-    
-    h6 {
-        font-family:$header;
-        color:$header-font-color;
-        font-size: 1rem;
-    }
-  }
+	height: 2rem;
+	background-color: $header-color;
+	.add-filter {
+		color: white !important;
+		margin-left: 2%;
+	}
+	@include center-align();
+	h6 {
+		font-family: $header;
+		color: $header-font-color;
+		font-size: 1rem;
+	}
+}
+
+.filter-column {
+	border: 2px dashed black;
+	margin-top: 2%;
+	.filter-title {
+		font-family: $header;
+		color: $header-font-color;
+		font-size: 0.75rem;
+		margin: 3%;
+	}
+	.filter-container {
+		display: flex;
+	}
+	.filter-item {
+		display: flex;
+		float: left;
+		margin: 2%;
+		.filter-checkbox {
+			font-family: 'Roboto', 'sans-serif';
+			color: black;
+			font-size: 0.75rem;
+		}
+	}
+}

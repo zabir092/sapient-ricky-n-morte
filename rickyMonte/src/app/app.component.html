@@ -1,12 +1,58 @@
 <section class="rm-main-content">
-   <header class="rm-main-nav"> 
-     <h3 class="rm-app-title">{{title}}</h3>
-   </header>
-   <section class = "row rm-main-content-body">
-     <aside class="col col-lg-2 col-md-3 col-sm-12 col-xs-12 rm-options">
-       <app-filter></app-filter>
-     </aside>
-     <section class="col col-lg-10 col-md-9 col-sm-12 col-xs-12 rm-contents"></section>
+  <header class="rm-main-nav">
+      <h3 class="rm-app-title">{{title}}</h3>
+  </header>
+  <section class="rm-main-content-body">
+      <aside class="rm-options">
+          <app-filter [filterList]="filterOptions" (filtersChange)="applyFilters()"></app-filter>
+      </aside>
+      <section class="rm-contents">
+          <div class="search-bar-container">
+              <input type="text" class="form-control search-box" [placeholder]="'Search by Name'" [(ngModel)]="searchStr" (ngModelChange)="searchList()" id="usr">
+              <span class="material-icons rm-search-icon">search</span>
+          </div>
+          <div class="rm-sort-bar-container">
+              <div class="filter-tags-wrapper">
+                  <div class="filter-tags" *ngFor="let filterTag of filterTags">
+                      <p>{{filterTag}}</p>
+                      <i class="material-icons md-light md-18" (click)="removeFilter(filterTag)">
+                          close
+                      </i>
+                  </div>
+              </div>
+              <div class="sort-wrapper">
+                  <div class="form-group">
+                      <label for="sortby" class="sort-by-label">Sort by ID:</label>
+                      <select class="form-control" id="sortby" [(ngModel)]="sortBy" (ngModelChange)="sortList()">
+                          <option>Ascending</option>
+                          <option>Descending</option>
+                      </select>
+                  </div>
+              </div>
+          </div>
+          <div class="item-list-wrapper">
+              <div class="item" *ngFor="let item of itemList">
+                  <div class="item-image-wrapper">
+                      <img [src]="(item && item.image) ? item.image : imagePlaceholder" [alt]="(item && item.name) ? item.name : 'Ricky and Morty show'" class="item-image">
+                      <div class="caption-section">
+                          <h6>{{item?.name}}</h6>
+                          <p>
+                              Id: {{item?.id}} | {{item?.location?.name}}
+                          </p>
+                      </div>
 
-   </section>
+                  </div>
+                  <div class="item-details-wrapper">
+                      <p> Status : {{item?.status}}</p>
+                      <p> Gender : {{item?.gender}}</p>
+                      <p> Species : {{item?.species}}</p>
+                      <p> Origin : {{item?.origin?.name}}</p>
+                  </div>
+
+              </div>
+          </div>
+      </section>
+
+  </section>
 </section>
+<div [ngBusy]="busy"></div>

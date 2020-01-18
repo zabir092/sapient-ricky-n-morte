@@ -1,3 +1,21 @@
-<nav class = "rm-filter-section-title">
+<nav class="rm-filter-section-title">
     <h6>{{filterHeader}}</h6>
+    <i *ngIf="!showFilter" class="material-icons md-light add-filter" (click)="showFilter = !showFilter">
+        add_circle
+    </i>
+    <i *ngIf="showFilter" class="material-icons md-light add-filter" (click)="showFilter = !showFilter">
+        close
+    </i>
 </nav>
+<div *ngIf="showFilter">
+    <div class="filter-column" *ngFor="let filterHeaders of filterList | keyvalue">
+        <h6 class="filter-title rm-filter-section-title">{{filterHeaders.key}}</h6>
+        <div class="filter-container">
+            <div class="checkbox filter-item" *ngFor="let filter of filterHeaders.value |keyvalue">
+                <label class="filter-checkbox"><input type="checkbox" [checked]="filter.value" (change)="onFilterChange(filter,filterHeaders.key)">{{filter.key}}</label>
+            </div>
+        </div>
+
+    </div>
+
+</div>
